@@ -7,14 +7,12 @@ import javax.swing.*;
 
 public class Form extends JFrame implements ActionListener{
 
-	
 	boolean corriendo = false;
 	static boolean inicio=true;
-	
 	static int hora=0,min=0,seg=0;
 	
-	public Form(){
-		
+	public Form()
+	{
 		setLayout(null);
 		setTitle("Mi cronometro");
 		setLocationRelativeTo(null);
@@ -25,7 +23,8 @@ public class Form extends JFrame implements ActionListener{
 	
 	JLabel texto;
 	JButton iniciar, parar;
-	private void iniciarComponentes() {
+	private void iniciarComponentes()
+	{
 		
 		texto = new JLabel("00:00:00");
 		texto.setBounds(100,5,100,100);
@@ -42,30 +41,32 @@ public class Form extends JFrame implements ActionListener{
 		
 		
 	}
+	
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		
+	public void actionPerformed(ActionEvent e) 
+	{
 		if(e.getSource()==iniciar) 
 		{
-		
-			if(corriendo==false) {
+			if(corriendo==false)
+			{
 				corriendo = true;
 				inicio = true;
 				iniciarHilo();
 			}
 			
 		}
-		else {
-			
+		else 
+		{
 			corriendo = false;
 			inicio = false;
 		}
 		
 	}
-	private void iniciarHilo() {
+	private void iniciarHilo() 
+	{
 		
-		if(inicio=true) {
+		if(inicio=true)
+		{
 			HiloCrono hilo = new HiloCrono(texto);
 			hilo.start();
 		}

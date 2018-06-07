@@ -1,5 +1,4 @@
 import java.awt.Font;
-
 import javax.swing.*;
 
 public class Splah extends JDialog {
@@ -7,10 +6,8 @@ public class Splah extends JDialog {
 	private JProgressBar progreso;
 	private JLabel letrero,inicio,medio,fin;
 	
-	
-	public Splah() {
-	
-		
+	public Splah()
+	{
 		iniciar();
 		setSize(300,130);
 		setLayout(null);
@@ -20,38 +17,41 @@ public class Splah extends JDialog {
 	}
 
 
-	private void comenzarHilo() {
+	private void comenzarHilo()
+	{
 		Thread hilo = new Thread(new Runnable() {
 			
 			int x = 0;
-			
+				
 			@Override
 			public void run() {
-				try {
-				while(x<=100){
-					progreso.setValue(x);
-					x++;
-					Thread.sleep(50);
+				try 
+				{
+					while(x<=100)
+					{
+						progreso.setValue(x);
+						x++;
+						Thread.sleep(50);
+					}
+					dispose();
+					Form myform = new Form();
+					myform.setVisible(true);
+					
 				}
-				
-				dispose();
-				Form myform = new Form();
-				myform.setVisible(true);
-				
-				
-				}catch (Exception e) {
+				catch (Exception e) 
+				{
 					System.out.println(e.getMessage());
 				}
-				
+					
 			}
 			
 		});
-		hilo.start();
-		
+		hilo.start();	
 	}
 
 
-	private void iniciar() {
+	private void iniciar() 
+	{
 		progreso = new JProgressBar();
 		progreso.setBounds(10,50, 280, 20);
 		add(progreso);
@@ -73,9 +73,5 @@ public class Splah extends JDialog {
 		fin.setBounds(270, 73, 40, 20);
 		add(fin);
 		
-	}
-	
-	
-	
-	
+	}	
 }
